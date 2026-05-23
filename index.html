@@ -149,7 +149,7 @@ textarea {
   inset: 0;
 }
 
-.placeholder {
+.position:fixeposition:absolute {
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -809,8 +809,8 @@ textarea {
 
   <main>
     <section class="hero" id="hero">
-      <div class="hero-media placeholder" aria-label="Cinematic stunt training image placeholder">
-        <span>MAIN VISUAL PLACEHOLDER</span>
+      <div class="hero-media position:fixeposition:absolute" aria-label="Cinematic stunt training image position:fixeposition:absolute">
+        <iframe src="https://www.youtube.com/embed/_ScrmYeZar4?autoplay=1&mute=1&loop=1&playlist=_ScrmYeZar4&controls=0&modestbranding=1&rel=0&playsinline=1" title="Seoul Action School video" style="position:absolute;top:50%;left:50%;width:max(100vw,177.78vh);height:max(56.25vw,100vh);border:0;transform:translate(-50%,-50%);" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -960,10 +960,10 @@ textarea {
         <p>원본 사이트의 액션가족, 갤러리, 동영상 게시판 성격을 반영한 임시 이미지 영역입니다.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item placeholder"><span>ACTION FAMILY PROFILE</span></div>
-        <div class="gallery-item placeholder tall"><span>TRAINING VIDEO</span></div>
-        <div class="gallery-item placeholder"><span>WORKS STILL</span></div>
-        <div class="gallery-item placeholder wide"><span>SCHOOL FACILITY / HEYRI</span></div>
+        <div class="gallery-item position:fixeposition:absolute"><span>ACTION FAMILY PROFILE</span></div>
+        <div class="gallery-item position:fixeposition:absolute tall"><span>TRAINING VIDEO</span></div>
+        <div class="gallery-item position:fixeposition:absolute"><span>WORKS STILL</span></div>
+        <div class="gallery-item position:fixeposition:absolute wide"><span>SCHOOL FACILITY / HEYRI</span></div>
       </div>
     </section>
 
@@ -1010,15 +1010,15 @@ textarea {
         <form class="contact-form">
           <label>
             <span>이름</span>
-            <input type="text" name="name" placeholder="홍길동">
+            <input type="text" name="name" position:fixeposition:absolute="홍길동">
           </label>
           <label>
             <span>연락처</span>
-            <input type="text" name="phone" placeholder="010-0000-0000">
+            <input type="text" name="phone" position:fixeposition:absolute="010-0000-0000">
           </label>
           <label>
             <span>문의 내용</span>
-            <textarea name="message" rows="5" placeholder="문의 내용을 입력해주세요."></textarea>
+            <textarea name="message" rows="5" position:fixeposition:absolute="문의 내용을 입력해주세요."></textarea>
           </label>
           <button class="btn btn-primary" type="submit">문의 보내기</button>
         </form>
