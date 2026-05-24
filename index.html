@@ -149,7 +149,7 @@ textarea {
   inset: 0;
 }
 
-.position:fixeposition:absolute {
+.placeholder {
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -305,6 +305,80 @@ textarea {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.promo-video {
+  padding-top: clamp(76px, 9vw, 116px);
+}
+
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  margin-top: 46px;
+  border: 1px solid var(--line);
+  background: #020202;
+  aspect-ratio: 16 / 9;
+}
+
+.video-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 16px;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.18)),
+    linear-gradient(0deg, rgba(5, 5, 5, 0.76), rgba(5, 5, 5, 0.08)),
+    url("https://img.youtube.com/vi/_ScrmYeZar4/maxresdefault.jpg") center / cover;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.video-frame.is-playing .video-cover {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.video-cover strong {
+  color: #fff;
+  font-family: "Oswald", "Noto Sans KR", sans-serif;
+  font-size: clamp(20px, 4vw, 34px);
+  text-transform: uppercase;
+}
+
+.play-mark {
+  display: grid;
+  place-items: center;
+  width: clamp(64px, 10vw, 92px);
+  height: clamp(64px, 10vw, 92px);
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 999px;
+  background: rgba(217, 32, 32, 0.88);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+}
+
+.play-mark::before {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 22px solid #fff;
+  content: "";
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .split,
@@ -798,6 +872,7 @@ textarea {
     </button>
     <nav class="site-nav" data-nav>
       <a href="#about">About</a>
+      <a href="#promo">Promo Video</a>
       <a href="#greeting">Greeting</a>
       <a href="#curriculum">Curriculum</a>
       <a href="#filmography">Works</a>
@@ -809,8 +884,8 @@ textarea {
 
   <main>
     <section class="hero" id="hero">
-      <div class="hero-media position:fixeposition:absolute" aria-label="Cinematic stunt training image position:fixeposition:absolute">
-        <iframe src="https://www.youtube.com/embed/_ScrmYeZar4?autoplay=1&mute=1&loop=1&playlist=_ScrmYeZar4&controls=0&modestbranding=1&rel=0&playsinline=1" title="Seoul Action School video" style="position:absolute;top:50%;left:50%;width:max(100vw,177.78vh);height:max(56.25vw,100vh);border:0;transform:translate(-50%,-50%);" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      <div class="hero-media placeholder" aria-label="Cinematic stunt training image placeholder">
+        <span>MAIN VISUAL PLACEHOLDER</span>
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -892,6 +967,29 @@ textarea {
       </div>
     </section>
 
+
+    <section class="section promo-video" id="promo">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Promotion Video</div>
+          <h2>Promo Video</h2>
+        </div>
+        <p>Watch the Seoul Action School training field and action energy in motion.</p>
+      </div>
+      <div class="video-frame">
+        <button class="video-cover" type="button" data-video-cover aria-label="Play promo video">
+          <span class="play-mark"></span>
+          <strong>Play Promo Video</strong>
+        </button>
+        <iframe
+          data-video-src="https://www.youtube.com/embed/_ScrmYeZar4?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+          title="Seoul Action School promotion video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
     <section class="section curriculum" id="curriculum">
       <div class="section-head">
         <div>
@@ -960,10 +1058,10 @@ textarea {
         <p>원본 사이트의 액션가족, 갤러리, 동영상 게시판 성격을 반영한 임시 이미지 영역입니다.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item position:fixeposition:absolute"><span>ACTION FAMILY PROFILE</span></div>
-        <div class="gallery-item position:fixeposition:absolute tall"><span>TRAINING VIDEO</span></div>
-        <div class="gallery-item position:fixeposition:absolute"><span>WORKS STILL</span></div>
-        <div class="gallery-item position:fixeposition:absolute wide"><span>SCHOOL FACILITY / HEYRI</span></div>
+        <div class="gallery-item placeholder"><span>ACTION FAMILY PROFILE</span></div>
+        <div class="gallery-item placeholder tall"><span>TRAINING VIDEO</span></div>
+        <div class="gallery-item placeholder"><span>WORKS STILL</span></div>
+        <div class="gallery-item placeholder wide"><span>SCHOOL FACILITY / HEYRI</span></div>
       </div>
     </section>
 
@@ -1010,15 +1108,15 @@ textarea {
         <form class="contact-form">
           <label>
             <span>이름</span>
-            <input type="text" name="name" position:fixeposition:absolute="홍길동">
+            <input type="text" name="name" placeholder="홍길동">
           </label>
           <label>
             <span>연락처</span>
-            <input type="text" name="phone" position:fixeposition:absolute="010-0000-0000">
+            <input type="text" name="phone" placeholder="010-0000-0000">
           </label>
           <label>
             <span>문의 내용</span>
-            <textarea name="message" rows="5" position:fixeposition:absolute="문의 내용을 입력해주세요."></textarea>
+            <textarea name="message" rows="5" placeholder="문의 내용을 입력해주세요."></textarea>
           </label>
           <button class="btn btn-primary" type="submit">문의 보내기</button>
         </form>
@@ -1038,6 +1136,7 @@ textarea {
       <circle cx="17.5" cy="6.5" r="1.1"></circle>
     </svg>
   </a>
+
   <script>
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
@@ -1100,7 +1199,22 @@ document.querySelector("[data-instagram-link]").addEventListener("click", (event
   }
 });
 
-  </script>
+document.querySelectorAll("[data-video-cover]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const frame = button.closest(".video-frame");
+    const iframe = frame.querySelector("iframe");
+
+    if (!iframe.src) {
+      iframe.src = iframe.dataset.videoSrc;
+    }
+
+    frame.classList.add("is-playing");
+  });
+});
+
+</script>
 </body>
 </html>
+
+
 
