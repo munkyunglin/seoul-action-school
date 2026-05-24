@@ -604,6 +604,112 @@ article p {
     var(--panel);
 }
 
+.experience-panel {
+  margin-top: 20px;
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(240, 181, 71, 0.12), rgba(240, 181, 71, 0) 38%),
+    #0b0b0b;
+}
+
+.experience-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 8px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-head h3 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 56px);
+}
+
+.experience-head span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.experience-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  margin-top: 26px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.experience-summary div {
+  padding: 24px;
+  background: #101010;
+}
+
+.experience-summary strong {
+  color: var(--accent-2);
+  font-family: "Oswald", "Noto Sans KR", sans-serif;
+  text-transform: uppercase;
+}
+
+.experience-summary p {
+  margin: 12px 0 6px;
+  color: #e1e1e1;
+  line-height: 1.7;
+}
+
+.experience-summary em,
+.experience-table em {
+  color: var(--muted);
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.experience-table {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.experience-row {
+  display: grid;
+  grid-template-columns: 150px minmax(240px, 1fr) minmax(220px, 0.8fr);
+  gap: 22px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-row span {
+  color: #58b8ff;
+  font-weight: 800;
+}
+
+.experience-row strong {
+  color: #fff;
+  font-size: clamp(18px, 3vw, 26px);
+}
+
+.experience-row em:first-of-type {
+  color: #ff5b5b;
+  font-weight: 800;
+}
+
+.experience-top span,
+.experience-top strong {
+  color: var(--accent-2);
+  font-family: "Oswald", "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-note {
+  margin: 24px 0 0;
+  color: #cfcfcf;
+  line-height: 1.8;
+}
+
 .recruit-info dl {
   margin: 0 0 28px;
 }
@@ -768,6 +874,7 @@ textarea {
   .about-grid,
   .greeting-block,
   .curriculum-list,
+  .experience-summary,
   .split,
   .section-head,
   .contact-layout,
@@ -795,6 +902,14 @@ textarea {
   }
 
   .works-table em {
+    grid-column: 2;
+  }
+
+  .experience-row {
+    grid-template-columns: 110px 1fr;
+  }
+
+  .experience-row em {
     grid-column: 2;
   }
 }
@@ -850,6 +965,20 @@ textarea {
   }
 
   .works-table em {
+    grid-column: auto;
+  }
+
+  .experience-head {
+    display: grid;
+    align-items: start;
+  }
+
+  .experience-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .experience-row em {
     grid-column: auto;
   }
 
@@ -1089,6 +1218,53 @@ textarea {
           </dl>
           <a class="btn btn-primary" href="#contact">지원 문의하기</a>
         </div>
+      </div>
+      <div class="experience-panel">
+        <div class="section-kicker">Experience Program</div>
+        <div class="experience-head">
+          <h3>체험 및 대관문의</h3>
+          <span>체험프로그램</span>
+        </div>
+        <div class="experience-summary">
+          <div>
+            <strong>대상</strong>
+            <p>성인 10인 이상 단체, 학생 및 대학 교체험</p>
+            <em>예: 단체 동호회, 회사 워크샵, 신입사원 오리엔테이션 등</em>
+          </div>
+          <div>
+            <strong>체험 프로그램</strong>
+            <p>영화 속 다양한 와이어 액션 체험, 고공낙하 체험, 페인트 서바이벌 게임</p>
+            <em>사극·현대 액션 장면 연출 및 신청시 별도 운영</em>
+          </div>
+        </div>
+        <div class="experience-table" role="table" aria-label="체험 프로그램 기본 체험료">
+          <div class="experience-row experience-top" role="row">
+            <span role="columnheader">참여인원</span>
+            <strong role="columnheader">기본체험료</strong>
+            <span role="columnheader">비고</span>
+          </div>
+          <div class="experience-row" role="row">
+            <span role="cell">10명 이하</span>
+            <strong role="cell">신청시 협의</strong>
+            <em role="cell">어린이 단체 30% 할인</em>
+          </div>
+          <div class="experience-row" role="row">
+            <span role="cell">10 ~ 20명</span>
+            <strong role="cell">문의 : 031-946-6746</strong>
+            <em role="cell">일반인 · 제휴기관 · 기업 및 단체</em>
+          </div>
+          <div class="experience-row" role="row">
+            <span role="cell">20 ~ 30명</span>
+            <strong role="cell">신청시 협의</strong>
+            <em role="cell">인원 및 프로그램별 별도 상담</em>
+          </div>
+          <div class="experience-row" role="row">
+            <span role="cell">30명 이상</span>
+            <strong role="cell">단체 프로그램 상담</strong>
+            <em role="cell">기업 워크샵 및 MT 등 시즌 제외 기간 예약</em>
+          </div>
+        </div>
+        <p class="experience-note">프로그램 진행은 당일 혹은 1박 2일 중 선택 가능하며, 자세한 사항은 전화 문의 또는 체험행사 게시판에 글을 남겨주시면 친절하게 상담해 드리겠습니다.</p>
       </div>
     </section>
 
