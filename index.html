@@ -614,23 +614,19 @@ article p {
 }
 
 .experience-head {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
   margin-top: 8px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 28px;
 }
 
 .experience-head h3 {
-  margin: 0;
-  font-size: clamp(30px, 5vw, 56px);
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: clamp(36px, 6vw, 76px);
+  line-height: 1.02;
 }
 
 .experience-head span {
-  color: var(--muted);
-  font-weight: 800;
+  display: none;
 }
 
 .experience-summary {
@@ -647,16 +643,65 @@ article p {
   background: #101010;
 }
 
+.experience-summary div:only-child {
+  grid-column: 1 / -1;
+}
+
+.experience-summary .rental-card {
+  display: grid;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 38px);
+}
+
 .experience-summary strong {
   color: var(--accent-2);
   font-family: "Oswald", "Noto Sans KR", sans-serif;
   text-transform: uppercase;
 }
 
+.rental-lead h4 {
+  margin: 10px 0 14px;
+  color: #fff;
+  font-size: clamp(24px, 4vw, 40px);
+}
+
 .experience-summary p {
   margin: 12px 0 6px;
   color: #e1e1e1;
   line-height: 1.7;
+}
+
+.rental-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.rental-info {
+  padding: 22px;
+  background: #151515;
+}
+
+.rental-info h5 {
+  margin: 0 0 12px;
+  color: var(--accent-2);
+  font-family: "Oswald", "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-summary ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: #e1e1e1;
+  line-height: 1.8;
+}
+
+.experience-summary li + li {
+  margin-top: 4px;
 }
 
 .experience-summary em,
@@ -733,51 +778,96 @@ dd {
 }
 
 .contact {
-  padding-top: 40px;
+  padding-top: 0;
 }
 
-.contact-lines {
-  display: grid;
-  gap: 10px;
-  margin-top: 34px;
-  color: var(--muted);
-  font-family: "Oswald", sans-serif;
-  letter-spacing: 0.06em;
+.contact .contact-layout {
+  grid-template-columns: 1fr;
 }
 
-.contact-form {
-  display: grid;
-  gap: 16px;
-  padding: 28px;
+.map-panel {
+  margin-top: 30px;
+  overflow: hidden;
+  border-radius: 18px;
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: #101010;
 }
 
-label {
-  display: grid;
-  gap: 8px;
-  color: #d8d8d8;
-  font-size: 14px;
+.google-map {
+  display: block;
+  width: 100%;
+  min-height: 360px;
+  border: 0;
+  background: #080808;
+}
+
+.map-link-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  color: #fff;
+  font-size: 13px;
   font-weight: 800;
 }
 
-input,
-textarea {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: #090909;
-  color: var(--text);
-  padding: 14px 15px;
-  outline: none;
+.map-link:hover {
+  border-color: var(--accent-2);
 }
 
-input:focus,
-textarea:focus {
-  border-color: var(--accent);
+.office-info {
+  display: grid;
+  gap: 1px;
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  background: var(--line);
 }
 
-textarea {
-  resize: vertical;
+.office-item {
+  display: grid;
+  grid-template-columns: 94px 1fr;
+  gap: 18px;
+  padding: 20px;
+  background: #101010;
+}
+
+.office-label {
+  color: var(--accent-2);
+  font-family: "Oswald", "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.office-value {
+  display: grid;
+  gap: 5px;
+  color: #d8d8d8;
+  line-height: 1.65;
+}
+
+.office-value span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.office-value a {
+  color: #fff;
+  font-weight: 800;
+}
+
+.office-value a:hover {
+  color: var(--accent-2);
 }
 
 .site-footer {
@@ -874,7 +964,9 @@ textarea {
   .about-grid,
   .greeting-block,
   .curriculum-list,
+  .experience-head,
   .experience-summary,
+  .rental-grid,
   .split,
   .section-head,
   .contact-layout,
@@ -986,6 +1078,12 @@ textarea {
     grid-template-columns: 1fr;
     gap: 6px;
   }
+
+  .office-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
 }
 
 </style>
@@ -1001,12 +1099,12 @@ textarea {
     </button>
     <nav class="site-nav" data-nav>
       <a href="#about">About</a>
-      <a href="#promo">Promo Video</a>
-      <a href="#greeting">Greeting</a>
+      <a href="#promo">홍보 영상</a>
+      <a href="#greeting">Greetings</a>
       <a href="#curriculum">Curriculum</a>
       <a href="#filmography">Works</a>
       <a href="#gallery">Gallery</a>
-      <a href="#recruit">Recruit</a>
+      <a href="#recruit">Recruitment</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1035,15 +1133,15 @@ textarea {
     <section class="section intro-strip" aria-label="Company highlights">
       <div class="metric">
         <strong>1998</strong>
-        <span>Founded As Stunt Academy</span>
+        <span>서울액션스쿨 설립</span>
       </div>
       <div class="metric">
         <strong>780+</strong>
-        <span>Listed Film, Drama, CF, M/V Works</span>
+        <span>영화·드라마·CF·M/V 참여 작품</span>
       </div>
       <div class="metric">
-        <strong>6M</strong>
-        <span>Regular Training Program</span>
+        <strong>6 months</strong>
+        <span>정규 훈련 프로그램</span>
       </div>
     </section>
 
@@ -1071,13 +1169,13 @@ textarea {
         </article>
         <article>
           <span>03</span>
-          <h3>Field Works</h3>
+          <h3>Total Productions</h3>
           <p>영화 269건, 드라마·CF·M/V 511건의 게시 작품 기록을 기반으로 현장성을 보여줍니다.</p>
         </article>
       </div>
       <div class="greeting-block" id="greeting">
         <div class="greeting-copy">
-          <div class="section-kicker">Greeting</div>
+          <div class="section-kicker">Greetings</div>
           <h3>액션스쿨 안내 · 인사말</h3>
           <p>안녕하십니까!</p>
           <p>저희 액션스쿨은 그동안 짧은 역사임에도 불구하고 영화와 방송, M/V, CF 등 다양한 매체를 통하여 국내 스턴트 분야와 액션 연기 분야의 선두 주자로서의 입지를 굳혀왔습니다.</p>
@@ -1100,19 +1198,19 @@ textarea {
     <section class="section promo-video" id="promo">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Promotion Video</div>
-          <h2>Promo Video</h2>
+          <div class="section-kicker">Promotional Video</div>
+          <h2>홍보 영상</h2>
         </div>
-        <p>Watch the Seoul Action School training field and action energy in motion.</p>
+        <p>서울액션스쿨의 훈련 현장과 역동적인 액션 에너지를 영상으로 확인해보세요.</p>
       </div>
       <div class="video-frame">
-        <button class="video-cover" type="button" data-video-cover aria-label="Play promo video">
+        <button class="video-cover" type="button" data-video-cover aria-label="홍보 영상 재생">
           <span class="play-mark"></span>
-          <strong>Play Promo Video</strong>
+          <strong>홍보 영상 재생</strong>
         </button>
         <iframe
           data-video-src="https://www.youtube.com/embed/_ScrmYeZar4?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-          title="Seoul Action School promotion video"
+          title="서울액션스쿨 홍보 영상"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
@@ -1122,24 +1220,24 @@ textarea {
     <section class="section curriculum" id="curriculum">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Training</div>
+          <div class="section-kicker">Training Curriculum</div>
           <h2>교육 커리큘럼</h2>
         </div>
         <p>FAQ에 공개된 정규 교육 기준으로, 기초체력부터 현대액션, 사극액션, 기초체조까지 6개월 과정으로 운영됩니다.</p>
       </div>
       <div class="curriculum-list">
         <article>
-          <span>Fitness</span>
+          <span>Physical Conditioning</span>
           <h3>기초체력</h3>
           <p>장거리·단거리 달리기, 점프, 근력, 지구력 등 액션 수행을 위한 기본 체력을 다집니다.</p>
         </article>
         <article>
-          <span>Modern Action</span>
+          <span>Contemporary Action</span>
           <h3>현대액션</h3>
           <p>주먹, 발차기, 피하기, 막기 등 영화와 드라마에서 쓰이는 기본 액션을 훈련합니다.</p>
         </article>
         <article>
-          <span>Period Action</span>
+          <span>Historical Action</span>
           <h3>사극액션</h3>
           <p>무기술을 포함한 시대극 액션과 장면에 맞는 동작 구성을 익힙니다.</p>
         </article>
@@ -1197,7 +1295,7 @@ textarea {
     <section class="section recruit" id="recruit">
       <div class="recruit-panel">
         <div>
-          <div class="section-kicker">Recruit</div>
+          <div class="section-kicker">Recruitment</div>
           <h2>교육생 모집 안내</h2>
           <p>원본 사이트의 최근 공지 기준으로 29기 모집은 2025년 1월 3일부터 2월 28일까지 진행되었으며, 스턴트와 액션배우 분야로 지원을 받았습니다.</p>
         </div>
@@ -1220,76 +1318,93 @@ textarea {
         </div>
       </div>
       <div class="experience-panel">
-        <div class="section-kicker">Experience Program</div>
         <div class="experience-head">
-          <h3>체험 및 대관문의</h3>
-          <span>체험프로그램</span>
+          <div class="section-kicker">Rental</div>
+          <h3>촬영 대관</h3>
         </div>
         <div class="experience-summary">
-          <div>
-            <strong>대상</strong>
-            <p>성인 10인 이상 단체, 학생 및 대학 교체험</p>
-            <em>예: 단체 동호회, 회사 워크샵, 신입사원 오리엔테이션 등</em>
-          </div>
-          <div>
-            <strong>체험 프로그램</strong>
-            <p>영화 속 다양한 와이어 액션 체험, 고공낙하 체험, 페인트 서바이벌 게임</p>
-            <em>사극·현대 액션 장면 연출 및 신청시 별도 운영</em>
-          </div>
-        </div>
-        <div class="experience-table" role="table" aria-label="체험 프로그램 기본 체험료">
-          <div class="experience-row" role="row">
-            <span role="cell">10명 이하</span>
-            <strong role="cell">신청시 협의</strong>
-            <em role="cell">어린이 단체 30% 할인</em>
-          </div>
-          <div class="experience-row" role="row">
-            <span role="cell">10 ~ 20명</span>
-            <strong role="cell">문의 : 031-946-6746</strong>
-            <em role="cell">일반인 · 제휴기관 · 기업 및 단체</em>
-          </div>
-          <div class="experience-row" role="row">
-            <span role="cell">20 ~ 30명</span>
-            <strong role="cell">신청시 협의</strong>
-            <em role="cell">인원 및 프로그램별 별도 상담</em>
-          </div>
-          <div class="experience-row" role="row">
-            <span role="cell">30명 이상</span>
-            <strong role="cell">단체 프로그램 상담</strong>
-            <em role="cell">기업 워크샵 및 MT 등 시즌 제외 기간 예약</em>
+          <div class="rental-card">
+            <div class="rental-lead">
+              <h4>서울액션스쿨 촬영 대관 안내</h4>
+              <p>서울액션스쿨은 영화, 드라마, 광고, 뮤직비디오, 유튜브 콘텐츠 등 다양한 영상 제작을 위한 촬영 공간 대관 서비스를 제공합니다.</p>
+              <p>실전 액션 훈련이 가능한 전문 시설과 넓은 공간을 활용하여 액션 연습 장면, 인터뷰 촬영, 콘텐츠 제작 등 다양한 촬영을 진행할 수 있습니다.</p>
+            </div>
+            <div class="rental-grid">
+              <div class="rental-info">
+                <h5>이용 안내</h5>
+                <ul>
+                  <li>촬영 목적의 공간 대관만 가능합니다.</li>
+                  <li>촬영 내용 및 일정은 사전 협의 후 진행됩니다.</li>
+                  <li>시설 보호 및 안전 수칙을 준수해 주시기 바랍니다.</li>
+                </ul>
+              </div>
+              <div class="rental-info">
+                <h5>대관 가능 콘텐츠</h5>
+                <ul>
+                  <li>영화 및 드라마 촬영</li>
+                  <li>광고 및 홍보 영상</li>
+                  <li>뮤직비디오</li>
+                  <li>유튜브 및 SNS 콘텐츠</li>
+                  <li>액션 시연 및 포트폴리오 촬영</li>
+                  <li>기타 영상 제작 프로젝트</li>
+                </ul>
+              </div>
+            </div>
+            <em>촬영 문의 및 대관 신청은 별도 문의를 통해 상담해 주시기 바랍니다.</em>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section contact" id="contact">
-      <div class="section-kicker">Contact</div>
+      <div class="section-kicker">Location</div>
       <div class="contact-layout">
         <div>
-          <h2>문의 및 위치 안내</h2>
-          <p>모집, 교육, 작품 관련 문의는 전화와 이메일로 확인할 수 있으며, 스쿨은 파주 헤이리 예술마을 1번 게이트 인근에 위치합니다.</p>
-          <div class="contact-lines">
-            <span>경기도 파주시 탄현면 헤이리마을길 18-61</span>
-            <span>seoulactionschool@naver.com</span>
-            <span>031-946-6746</span>
-            <span>운영시간 10:00-17:00 · 교육생 훈련 13:00-17:00</span>
+          <h2>오시는 길</h2>
+          <p>서울액션스쿨은 경기도 파주시 탄현면 헤이리 예술마을 인근에 위치합니다.</p>
+          <div class="map-panel">
+            <iframe
+              class="google-map"
+              src="https://www.google.com/maps?q=37.7874749,126.6945744&hl=ko&z=16&output=embed"
+              title="서울액션스쿨 Google 지도"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-link-bar">
+              <a class="map-link" href="https://www.google.com/maps/place/%EC%84%9C%EC%9A%B8%EC%95%A1%EC%85%98%EC%8A%A4%EC%BF%A8/data=!4m6!3m5!1s0x357c8bf53e04bea5:0xb61ca915c2044ad8!8m2!3d37.7874749!4d126.6945744!16s%2Fg%2F1vljd7_c?hl=ko&amp;entry=ttu&amp;g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Google 지도 보기</a>
+            </div>
+          </div>
+          <div class="office-info" aria-label="서울액션스쿨 위치 및 연락처">
+            <div class="office-item">
+              <strong class="office-label">Address</strong>
+              <div class="office-value">
+                경기도 파주시 탄현면 헤이리마을길 18-61
+                <span>18-61, Heyrimaeul-gil, Tanhyeon-myeon, Paju-si, Gyeonggi-do</span>
+              </div>
+            </div>
+            <div class="office-item">
+              <strong class="office-label">Tel</strong>
+              <div class="office-value">031-946-6746</div>
+            </div>
+            <div class="office-item">
+              <strong class="office-label">E-mail</strong>
+              <div class="office-value">seoulactionschool@naver.com</div>
+            </div>
+            <div class="office-item">
+              <strong class="office-label">Instagram</strong>
+              <div class="office-value">
+                <a href="https://www.instagram.com/seoulactionschool/" target="_blank" rel="noopener noreferrer">@seoulactionschool</a>
+              </div>
+            </div>
+            <div class="office-item">
+              <strong class="office-label">Hours</strong>
+              <div class="office-value">
+                운영시간 10:00-17:00
+                <span>교육생 훈련 13:00-17:00</span>
+              </div>
+            </div>
           </div>
         </div>
-        <form class="contact-form">
-          <label>
-            <span>이름</span>
-            <input type="text" name="name" placeholder="홍길동">
-          </label>
-          <label>
-            <span>연락처</span>
-            <input type="text" name="phone" placeholder="010-0000-0000">
-          </label>
-          <label>
-            <span>문의 내용</span>
-            <textarea name="message" rows="5" placeholder="문의 내용을 입력해주세요."></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">문의 보내기</button>
-        </form>
       </div>
     </section>
   </main>
@@ -1334,7 +1449,7 @@ nav.querySelectorAll("a").forEach((link) => {
 });
 
 const revealTargets = document.querySelectorAll(
-  ".section h2, .section-text, .about-grid article, .curriculum-list article, .works-table div, .gallery-item, .recruit-panel, .contact-form"
+  ".section h2, .section-text, .about-grid article, .curriculum-list article, .works-table div, .gallery-item, .recruit-panel"
 );
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
@@ -1352,12 +1467,6 @@ const observer = new IntersectionObserver(
 );
 
 revealTargets.forEach((target) => observer.observe(target));
-
-document.querySelector(".contact-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  event.currentTarget.reset();
-  alert("문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.");
-});
 
 document.querySelector("[data-instagram-link]").addEventListener("click", (event) => {
   event.preventDefault();
@@ -1385,6 +1494,3 @@ document.querySelectorAll("[data-video-cover]").forEach((button) => {
 </script>
 </body>
 </html>
-
-
-

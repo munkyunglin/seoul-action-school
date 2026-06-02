@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seoul Action School Preview</title>
+  <style>
+:root {
+  --bg: #111;
+  --panel: #1b1b1b;
+  --panel-2: #252525;
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f5f5f5;
+  --muted: #a7a7a7;
+  --accent: #d92020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0b0b0b;
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+}
+
+.preview-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.preview-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(17, 17, 17, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.preview-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.preview-title strong {
+  font-size: 15px;
+}
+
+.preview-title span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.preview-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preview-button {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.preview-button:hover,
+.preview-button.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.preview-button.preview-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.preview-stage {
+  display: grid;
+  place-items: start center;
+  min-height: 0;
+  padding: 26px;
+  overflow: auto;
+}
+
+.device {
+  width: min(100%, var(--device-width));
+  height: min(calc(100vh - 122px), var(--device-height));
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  transition: width 0.22s ease, height 0.22s ease;
+}
+
+.device iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #050505;
+}
+
+body[data-device="desktop"] {
+  --device-width: 1440px;
+  --device-height: 920px;
+}
+
+body[data-device="tablet"] {
+  --device-width: 820px;
+  --device-height: 980px;
+}
+
+body[data-device="mobile"] {
+  --device-width: 390px;
+  --device-height: 844px;
+}
+
+@media (max-width: 720px) {
+  .preview-toolbar {
+    align-items: stretch;
+  }
+
+  .preview-title,
+  .preview-controls {
+    width: 100%;
+  }
+
+  .preview-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .preview-button {
+    width: 100%;
+  }
+
+  .preview-stage {
+    padding: 14px;
+  }
+
+  .device {
+    min-height: calc(100vh - 180px);
+  }
+}
+  </style>
+</head>
+<body data-device="desktop">
+  <div class="preview-shell">
+    <header class="preview-toolbar">
+      <div class="preview-title">
+        <strong>Seoul Action School 미리보기</strong>
+        <span>index.html 화면을 기기 크기별로 확인합니다.</span>
+      </div>
+      <nav class="preview-controls" aria-label="미리보기 크기 선택">
+        <button class="preview-button is-active" type="button" data-device-button="desktop">Desktop</button>
+        <button class="preview-button" type="button" data-device-button="tablet">Tablet</button>
+        <button class="preview-button" type="button" data-device-button="mobile">Mobile</button>
+        <button class="preview-button" type="button" data-refresh>Refresh</button>
+        <a class="preview-button preview-link" href="index.html" target="_blank" rel="noopener noreferrer">Open</a>
+      </nav>
+    </header>
+
+    <main class="preview-stage">
+      <section class="device" aria-label="홈페이지 미리보기 화면">
+        <iframe src="index.html" title="Seoul Action School homepage preview"></iframe>
+      </section>
+    </main>
+  </div>
+
+  <script>
+const buttons = document.querySelectorAll("[data-device-button]");
+const frame = document.querySelector("iframe");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    document.body.dataset.device = button.dataset.deviceButton;
+    buttons.forEach((item) => item.classList.toggle("is-active", item === button));
+  });
+});
+
+document.querySelector("[data-refresh]").addEventListener("click", () => {
+  frame.contentWindow.location.reload();
+});
+  </script>
+</body>
+</html>
