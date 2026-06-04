@@ -57,7 +57,7 @@ textarea {
   z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   min-height: 132px;
   padding: 0 clamp(18px, 4vw, 58px);
@@ -73,12 +73,9 @@ textarea {
 }
 
 .brand {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   display: block;
-  width: clamp(240px, 22vw, 320px);
-  transform: translate(-50%, -50%);
+  flex: 0 0 auto;
+  width: clamp(190px, 18vw, 280px);
 }
 
 .brand-logo {
@@ -89,10 +86,12 @@ textarea {
 
 .site-nav {
   display: flex;
-  gap: 28px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 28px);
   color: #d7d7d7;
   font-family: "Oswald", sans-serif;
-  font-size: 13px;
+  font-size: clamp(11px, 1.1vw, 13px);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -931,6 +930,15 @@ dd {
 }
 
 @media (max-width: 920px) {
+  .site-header {
+    justify-content: space-between;
+    min-height: 112px;
+  }
+
+  .brand {
+    width: min(54vw, 260px);
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1008,7 +1016,7 @@ dd {
 
 @media (max-width: 620px) {
   .brand {
-    width: min(58vw, 260px);
+    width: min(58vw, 240px);
   }
 
   .hero {
