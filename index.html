@@ -169,12 +169,6 @@ textarea {
   transform: scale(1.02);
 }
 
-.hero-media span {
-  position: absolute;
-  right: clamp(20px, 8vw, 110px);
-  bottom: clamp(110px, 12vw, 160px);
-}
-
 .hero-overlay {
   z-index: 1;
   background:
@@ -249,22 +243,6 @@ textarea {
 
 .btn-ghost {
   background: rgba(255, 255, 255, 0.04);
-}
-
-.hero-meta {
-  position: absolute;
-  right: clamp(18px, 4vw, 58px);
-  bottom: 30px;
-  left: clamp(18px, 4vw, 58px);
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-  color: var(--soft);
-  font-family: "Oswald", sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.12em;
 }
 
 .section {
@@ -520,6 +498,16 @@ article p {
   padding-right: max(18px, calc((100vw - var(--max)) / 2));
   padding-left: max(18px, calc((100vw - var(--max)) / 2));
   background: #0a0a0a;
+}
+
+.curriculum .section-head {
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.curriculum .section-head > p {
+  white-space: nowrap;
+  font-size: clamp(14px, 1.45vw, 17px);
 }
 
 .curriculum-list {
@@ -986,6 +974,10 @@ dd {
     gap: 1px;
   }
 
+  .curriculum .section-head > p {
+    white-space: normal;
+  }
+
   .greeting-sign {
     border-top: 1px solid var(--line);
     border-left: 0;
@@ -1027,7 +1019,6 @@ dd {
     font-size: clamp(58px, 22vw, 98px);
   }
 
-  .hero-meta,
   .site-footer {
     flex-direction: column;
   }
@@ -1037,11 +1028,6 @@ dd {
     right: 18px;
     width: 50px;
     height: 50px;
-  }
-
-  .hero-media span {
-    right: 24px;
-    bottom: 96px;
   }
 
   .metric {
@@ -1107,7 +1093,7 @@ dd {
     </button>
     <nav class="site-nav" data-nav>
       <a href="#about">About</a>
-      <a href="#promo">홍보 영상</a>
+      <a href="#promo">브랜드 필름</a>
       <a href="#greeting">Greetings</a>
       <a href="#curriculum">Curriculum</a>
       <a href="#filmography">Works</a>
@@ -1119,9 +1105,7 @@ dd {
 
   <main>
     <section class="hero" id="hero">
-      <div class="hero-media placeholder" aria-label="Cinematic stunt training image placeholder">
-        <span>MAIN VISUAL PLACEHOLDER</span>
-      </div>
+      <div class="hero-media placeholder" aria-label="Cinematic stunt training image placeholder"></div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="eyebrow">SINCE 1998 · STUNT · ACTION ACTING · MARTIAL ARTS</p>
@@ -1131,10 +1115,6 @@ dd {
           <a class="btn btn-primary" href="#recruit">모집 안내 보기</a>
           <a class="btn btn-ghost" href="#curriculum">커리큘럼 확인</a>
         </div>
-      </div>
-      <div class="hero-meta">
-        <span>HEYRI ART VILLAGE, PAJU</span>
-        <span>REAL ACTION TRAINING</span>
       </div>
     </section>
 
@@ -1207,18 +1187,18 @@ dd {
       <div class="section-head">
         <div>
           <div class="section-kicker">Promotional Video</div>
-          <h2>홍보 영상</h2>
+          <h2>서울액션스쿨 브랜드 필름</h2>
         </div>
         <p>서울액션스쿨의 훈련 현장과 역동적인 액션 에너지를 영상으로 확인해보세요.</p>
       </div>
       <div class="video-frame">
-        <button class="video-cover" type="button" data-video-cover aria-label="홍보 영상 재생">
+        <button class="video-cover" type="button" data-video-cover aria-label="서울액션스쿨 브랜드 필름 재생">
           <span class="play-mark"></span>
-          <strong>홍보 영상 재생</strong>
+          <strong>브랜드 필름 재생</strong>
         </button>
         <iframe
           data-video-src="https://www.youtube.com/embed/_ScrmYeZar4?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-          title="서울액션스쿨 홍보 영상"
+          title="서울액션스쿨 브랜드 필름"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
@@ -1229,7 +1209,7 @@ dd {
       <div class="section-head">
         <div>
           <div class="section-kicker">Training Curriculum</div>
-          <h2>교육 커리큘럼</h2>
+          <h2>커리큘럼</h2>
         </div>
         <p>FAQ에 공개된 정규 교육 기준으로, 기초체력부터 현대액션, 사극액션, 기초체조까지 6개월 과정으로 운영됩니다.</p>
       </div>
