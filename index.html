@@ -807,6 +807,26 @@ article p {
   margin-top: 46px;
 }
 
+.gallery-item {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #101010;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+  transition: transform 0.28s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
 .gallery-item.tall {
   grid-row: span 2;
 }
@@ -1572,15 +1592,22 @@ dd {
       <div class="section-head">
         <div>
           <div class="section-kicker">Gallery</div>
-          <h2>현장 갤러리</h2>
+          <h2>서울액션스쿨 갤러리</h2>
         </div>
-        <p>원본 사이트의 액션가족, 갤러리, 동영상 게시판 성격을 반영한 임시 이미지 영역입니다.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item placeholder"><span>ACTION FAMILY PROFILE</span></div>
-        <div class="gallery-item placeholder tall"><span>TRAINING VIDEO</span></div>
-        <div class="gallery-item placeholder"><span>WORKS STILL</span></div>
-        <div class="gallery-item placeholder wide"><span>SCHOOL FACILITY / HEYRI</span></div>
+        <figure class="gallery-item tall">
+          <img src="images/gallery/seoul-action-school-gallery-01.jpg" alt="서울액션스쿨 와이어 액션 훈련">
+        </figure>
+        <figure class="gallery-item tall">
+          <img src="images/gallery/seoul-action-school-gallery-04.jpg" alt="서울액션스쿨 와이어 장비 설치 현장">
+        </figure>
+        <figure class="gallery-item wide">
+          <img src="images/gallery/seoul-action-school-gallery-02.jpg" alt="서울액션스쿨 훈련장 전경">
+        </figure>
+        <figure class="gallery-item wide">
+          <img src="images/gallery/seoul-action-school-gallery-03.jpg" alt="서울액션스쿨 시설 갤러리">
+        </figure>
       </div>
     </section>
 
