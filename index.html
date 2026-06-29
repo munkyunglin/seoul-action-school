@@ -548,33 +548,51 @@ article p {
   margin-bottom: 38px;
 }
 
-.works-table {
+.poster-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0 16px;
   border-top: 1px solid var(--line);
-}
-
-.works-table div {
-  display: grid;
-  grid-template-columns: 120px minmax(180px, 1fr) minmax(220px, 0.8fr);
-  gap: 22px;
-  align-items: center;
-  padding: 26px 0;
   border-bottom: 1px solid var(--line);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.works-table span {
-  color: var(--accent-2);
-  font-family: "Oswald", sans-serif;
+.poster-track {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  animation: poster-scroll 36s linear infinite;
 }
 
-.works-table strong {
-  font-family: "Oswald", sans-serif;
-  font-size: clamp(24px, 4vw, 42px);
-  text-transform: uppercase;
+.poster-marquee:hover .poster-track {
+  animation-play-state: paused;
 }
 
-.works-table em {
-  color: var(--muted);
-  font-style: normal;
+.poster-card {
+  position: relative;
+  flex: 0 0 clamp(150px, 14vw, 220px);
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #191919;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+}
+
+.poster-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes poster-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .family-profile {
@@ -1265,12 +1283,8 @@ dd {
     min-height: 320px;
   }
 
-  .works-table div {
-    grid-template-columns: 80px 1fr;
-  }
-
-  .works-table em {
-    grid-column: 2;
+  .poster-card {
+    flex-basis: 170px;
   }
 
   .experience-row {
@@ -1334,13 +1348,12 @@ dd {
     grid-column: auto;
   }
 
-  .works-table div {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .poster-track {
+    gap: 12px;
   }
 
-  .works-table em {
-    grid-column: auto;
+  .poster-card {
+    flex-basis: 138px;
   }
 
   .experience-head {
@@ -1528,26 +1541,104 @@ dd {
     <section class="section filmography" id="filmography">
       <div class="section-kicker">Filmography</div>
       <h2>필모그래피</h2>
-      <div class="works-table" role="table" aria-label="Filmography examples">
-        <div role="row">
-          <span role="cell">2024</span>
-          <strong role="cell">황야 · 전,란 · 외계+인 2부</strong>
-          <em role="cell">영화 게시판 수록 작품</em>
-        </div>
-        <div role="row">
-          <span role="cell">2024</span>
-          <strong role="cell">베테랑2 · 범죄도시4 · 시민덕희</strong>
-          <em role="cell">영화 게시판 수록 작품</em>
-        </div>
-        <div role="row">
-          <span role="cell">2024</span>
-          <strong role="cell">강남 비-사이드 · 가족계획 · 밤에 피는 꽃</strong>
-          <em role="cell">드라마, CF, M/V 게시판 수록 작품</em>
-        </div>
-        <div role="row">
-          <span role="cell">2024</span>
-          <strong role="cell">눈물의 여왕 · 킬러들의 쇼핑몰 · 더 에이트 쇼</strong>
-          <em role="cell">드라마, CF, M/V 게시판 수록 작품</em>
+      <div class="poster-marquee" aria-label="Filmography poster carousel">
+        <div class="poster-track">
+          <article class="poster-card">
+            <img src="images/filmography/polaris.jpeg" alt="북극성 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/aema.jpeg" alt="애마 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/king-and-man.jpeg" alt="왕과 사는 남자 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/dear-x.jpeg" alt="친애하는 X 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/twelve.jpeg" alt="트웰브 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/hateful-love.jpeg" alt="얄미운 사랑 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/genie-make-a-wish.jpeg" alt="다 이루어질지니 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/ballerina.jpeg" alt="발레리나 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/colony.jpeg" alt="군체 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/hope.jpeg" alt="호프 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/trigger.jpeg" alt="기리고 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/good-woman-busemi.jpeg" alt="착한 여자 부세미 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/mantis.jpeg" alt="사마귀 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/humint.jpeg" alt="휴민트 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/lady-doir.jpeg" alt="레이디 두아 포스터">
+          </article>
+          <article class="poster-card">
+            <img src="images/filmography/no-other-choice.jpeg" alt="어쩔수가없다 포스터">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/polaris.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/aema.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/king-and-man.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/dear-x.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/twelve.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/hateful-love.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/genie-make-a-wish.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/ballerina.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/colony.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/hope.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/trigger.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/good-woman-busemi.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/mantis.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/humint.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/lady-doir.jpeg" alt="">
+          </article>
+          <article class="poster-card" aria-hidden="true">
+            <img src="images/filmography/no-other-choice.jpeg" alt="">
+          </article>
         </div>
       </div>
     </section>
@@ -1820,7 +1911,7 @@ nav.querySelectorAll("a").forEach((link) => {
 });
 
 const revealTargets = document.querySelectorAll(
-  ".section h2, .section-text, .about-grid article, .curriculum-list article, .works-table div, .gallery-item, .recruit-panel"
+  ".section h2, .section-text, .about-grid article, .curriculum-list article, .poster-marquee, .gallery-item, .recruit-panel"
 );
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
