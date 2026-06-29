@@ -558,14 +558,21 @@ article p {
 }
 
 .poster-track {
+  --poster-gap: 18px;
   display: flex;
   width: max-content;
-  gap: 18px;
   animation: poster-scroll 36s linear infinite;
 }
 
 .poster-marquee:hover .poster-track {
   animation-play-state: paused;
+}
+
+.poster-set {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--poster-gap);
+  padding-right: var(--poster-gap);
 }
 
 .poster-card {
@@ -1349,7 +1356,7 @@ dd {
   }
 
   .poster-track {
-    gap: 12px;
+    --poster-gap: 12px;
   }
 
   .poster-card {
@@ -1543,102 +1550,106 @@ dd {
       <h2>필모그래피</h2>
       <div class="poster-marquee" aria-label="Filmography poster carousel">
         <div class="poster-track">
-          <article class="poster-card">
-            <img src="images/filmography/polaris.jpeg" alt="북극성 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/aema.jpeg" alt="애마 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/king-and-man.jpeg" alt="왕과 사는 남자 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/dear-x.jpeg" alt="친애하는 X 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/twelve.jpeg" alt="트웰브 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/hateful-love.jpeg" alt="얄미운 사랑 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/genie-make-a-wish.jpeg" alt="다 이루어질지니 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/ballerina.jpeg" alt="발레리나 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/colony.jpeg" alt="군체 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/hope.jpeg" alt="호프 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/trigger.jpeg" alt="기리고 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/good-woman-busemi.jpeg" alt="착한 여자 부세미 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/mantis.jpeg" alt="사마귀 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/humint.jpeg" alt="휴민트 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/lady-doir.jpeg" alt="레이디 두아 포스터">
-          </article>
-          <article class="poster-card">
-            <img src="images/filmography/no-other-choice.jpeg" alt="어쩔수가없다 포스터">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/polaris.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/aema.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/king-and-man.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/dear-x.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/twelve.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/hateful-love.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/genie-make-a-wish.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/ballerina.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/colony.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/hope.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/trigger.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/good-woman-busemi.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/mantis.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/humint.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/lady-doir.jpeg" alt="">
-          </article>
-          <article class="poster-card" aria-hidden="true">
-            <img src="images/filmography/no-other-choice.jpeg" alt="">
-          </article>
+          <div class="poster-set">
+            <article class="poster-card">
+              <img src="images/filmography/polaris.jpeg" alt="북극성 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/aema.jpeg" alt="애마 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/king-and-man.jpeg" alt="왕과 사는 남자 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/dear-x.jpeg" alt="친애하는 X 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/twelve.jpeg" alt="트웰브 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/hateful-love.jpeg" alt="얄미운 사랑 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/genie-make-a-wish.jpeg" alt="다 이루어질지니 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/ballerina.jpeg" alt="발레리나 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/colony.jpeg" alt="군체 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/hope.jpeg" alt="호프 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/trigger.jpeg" alt="기리고 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/good-woman-busemi.jpeg" alt="착한 여자 부세미 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/mantis.jpeg" alt="사마귀 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/humint.jpeg" alt="휴민트 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/lady-doir.jpeg" alt="레이디 두아 포스터">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/no-other-choice.jpeg" alt="어쩔수가없다 포스터">
+            </article>
+          </div>
+          <div class="poster-set" aria-hidden="true">
+            <article class="poster-card">
+              <img src="images/filmography/polaris.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/aema.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/king-and-man.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/dear-x.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/twelve.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/hateful-love.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/genie-make-a-wish.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/ballerina.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/colony.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/hope.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/trigger.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/good-woman-busemi.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/mantis.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/humint.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/lady-doir.jpeg" alt="">
+            </article>
+            <article class="poster-card">
+              <img src="images/filmography/no-other-choice.jpeg" alt="">
+            </article>
+          </div>
         </div>
       </div>
     </section>
