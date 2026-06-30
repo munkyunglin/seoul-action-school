@@ -550,29 +550,33 @@ article p {
 
 .poster-marquee {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px 0 16px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(255, 255, 255, 0.34) transparent;
 }
 
 .poster-track {
   --poster-gap: 18px;
   display: flex;
   width: max-content;
-  animation: poster-scroll 36s linear infinite;
-}
-
-.poster-marquee:hover .poster-track {
-  animation-play-state: paused;
-}
-
-.poster-set {
-  display: flex;
-  flex: 0 0 auto;
   gap: var(--poster-gap);
-  padding-right: var(--poster-gap);
+}
+
+.poster-marquee::-webkit-scrollbar {
+  height: 8px;
+}
+
+.poster-marquee::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.poster-marquee::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .poster-card {
@@ -580,9 +584,13 @@ article p {
   flex: 0 0 clamp(150px, 14vw, 220px);
   aspect-ratio: 2 / 3;
   overflow: hidden;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 0;
   background: #191919;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+  cursor: zoom-in;
+  scroll-snap-align: start;
 }
 
 .poster-card img {
@@ -592,14 +600,47 @@ article p {
   object-fit: cover;
 }
 
-@keyframes poster-scroll {
-  from {
-    transform: translateX(0);
-  }
+.poster-card:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 4px;
+}
 
-  to {
-    transform: translateX(-33.333333%);
-  }
+.poster-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.86);
+}
+
+.poster-lightbox.is-open {
+  display: flex;
+}
+
+.poster-lightbox img {
+  display: block;
+  max-width: min(86vw, 560px);
+  max-height: 86svh;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.62);
+}
+
+.poster-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--text);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .family-profile {
@@ -1548,161 +1589,64 @@ dd {
     <section class="section filmography" id="filmography">
       <div class="section-kicker">Filmography</div>
       <h2>필모그래피</h2>
-      <div class="poster-marquee" aria-label="Filmography poster carousel">
+      <div class="poster-marquee" aria-label="Filmography poster gallery">
         <div class="poster-track">
-          <div class="poster-set">
-            <article class="poster-card">
-              <img src="images/filmography/polaris.jpeg" alt="북극성 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/aema.jpeg" alt="애마 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/king-and-man.jpeg" alt="왕과 사는 남자 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/dear-x.jpeg" alt="친애하는 X 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/twelve.jpeg" alt="트웰브 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hateful-love.jpeg" alt="얄미운 사랑 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/genie-make-a-wish.jpeg" alt="다 이루어질지니 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/ballerina.jpeg" alt="발레리나 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/colony.jpeg" alt="군체 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hope.jpeg" alt="호프 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/trigger.jpeg" alt="기리고 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/good-woman-busemi.jpeg" alt="착한 여자 부세미 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/mantis.jpeg" alt="사마귀 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/humint.jpeg" alt="휴민트 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/lady-doir.jpeg" alt="레이디 두아 포스터">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/no-other-choice.jpeg" alt="어쩔수가없다 포스터">
-            </article>
-          </div>
-          <div class="poster-set" aria-hidden="true">
-            <article class="poster-card">
-              <img src="images/filmography/polaris.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/aema.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/king-and-man.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/dear-x.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/twelve.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hateful-love.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/genie-make-a-wish.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/ballerina.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/colony.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hope.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/trigger.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/good-woman-busemi.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/mantis.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/humint.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/lady-doir.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/no-other-choice.jpeg" alt="">
-            </article>
-          </div>
-          <div class="poster-set" aria-hidden="true">
-            <article class="poster-card">
-              <img src="images/filmography/polaris.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/aema.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/king-and-man.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/dear-x.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/twelve.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hateful-love.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/genie-make-a-wish.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/ballerina.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/colony.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/hope.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/trigger.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/good-woman-busemi.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/mantis.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/humint.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/lady-doir.jpeg" alt="">
-            </article>
-            <article class="poster-card">
-              <img src="images/filmography/no-other-choice.jpeg" alt="">
-            </article>
-          </div>
+          <button class="poster-card" type="button" data-poster-title="북극성 포스터">
+            <img src="images/filmography/polaris.jpeg" alt="북극성 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="애마 포스터">
+            <img src="images/filmography/aema.jpeg" alt="애마 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="왕과 사는 남자 포스터">
+            <img src="images/filmography/king-and-man.jpeg" alt="왕과 사는 남자 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="친애하는 X 포스터">
+            <img src="images/filmography/dear-x.jpeg" alt="친애하는 X 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="트웰브 포스터">
+            <img src="images/filmography/twelve.jpeg" alt="트웰브 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="얄미운 사랑 포스터">
+            <img src="images/filmography/hateful-love.jpeg" alt="얄미운 사랑 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="다 이루어질지니 포스터">
+            <img src="images/filmography/genie-make-a-wish.jpeg" alt="다 이루어질지니 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="발레리나 포스터">
+            <img src="images/filmography/ballerina.jpeg" alt="발레리나 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="군체 포스터">
+            <img src="images/filmography/colony.jpeg" alt="군체 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="호프 포스터">
+            <img src="images/filmography/hope.jpeg" alt="호프 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="기리고 포스터">
+            <img src="images/filmography/trigger.jpeg" alt="기리고 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="착한 여자 부세미 포스터">
+            <img src="images/filmography/good-woman-busemi.jpeg" alt="착한 여자 부세미 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="사마귀 포스터">
+            <img src="images/filmography/mantis.jpeg" alt="사마귀 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="휴민트 포스터">
+            <img src="images/filmography/humint.jpeg?v=20260701" alt="휴민트 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="레이디 두아 포스터">
+            <img src="images/filmography/lady-doir.jpeg" alt="레이디 두아 포스터">
+          </button>
+          <button class="poster-card" type="button" data-poster-title="어쩔수가없다 포스터">
+            <img src="images/filmography/no-other-choice.jpeg" alt="어쩔수가없다 포스터">
+          </button>
         </div>
       </div>
     </section>
+
+    <div class="poster-lightbox" data-poster-lightbox aria-hidden="true">
+      <button class="poster-lightbox-close" type="button" aria-label="포스터 크게 보기 닫기" data-poster-close>&times;</button>
+      <img src="" alt="" data-poster-full>
+    </div>
 
     <section class="section family-profile" id="family-profile">
       <div class="section-head">
@@ -2013,6 +1957,58 @@ document.querySelectorAll("[data-video-cover]").forEach((button) => {
     frame.classList.add("is-playing");
   });
 });
+
+const posterLightbox = document.querySelector("[data-poster-lightbox]");
+const posterFull = document.querySelector("[data-poster-full]");
+const posterClose = document.querySelector("[data-poster-close]");
+let lastPosterTrigger = null;
+
+const closePosterLightbox = () => {
+  if (!posterLightbox) {
+    return;
+  }
+
+  posterLightbox.classList.remove("is-open");
+  posterLightbox.setAttribute("aria-hidden", "true");
+  posterFull.src = "";
+  posterFull.alt = "";
+
+  if (lastPosterTrigger) {
+    lastPosterTrigger.focus();
+  }
+};
+
+document.querySelectorAll(".poster-card").forEach((button) => {
+  button.addEventListener("click", () => {
+    const image = button.querySelector("img");
+
+    if (!posterLightbox || !posterFull || !image) {
+      return;
+    }
+
+    lastPosterTrigger = button;
+    posterFull.src = image.src;
+    posterFull.alt = button.dataset.posterTitle || image.alt;
+    posterLightbox.classList.add("is-open");
+    posterLightbox.setAttribute("aria-hidden", "false");
+    posterClose.focus();
+  });
+});
+
+if (posterLightbox && posterClose) {
+  posterClose.addEventListener("click", closePosterLightbox);
+  posterLightbox.addEventListener("click", (event) => {
+    if (event.target === posterLightbox) {
+      closePosterLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && posterLightbox.classList.contains("is-open")) {
+      closePosterLightbox();
+    }
+  });
+}
 
 const profileToggle = document.querySelector("[data-profile-toggle]");
 const profileGrid = document.querySelector("#family-profile-grid");
